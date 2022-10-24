@@ -50,7 +50,7 @@ return(
         <p>Sum of {result.length} IDs:  {mapReduce}</p>
 
         {/* Embed code snippets in React render: https://stackoverflow.com/a/46649904/946957 */}
-        <code>{`
+        <pre>{`
         const SSR = ({ result }) => {
 
             const mapReduce = result.map( (singleItem, Index) =>
@@ -74,7 +74,7 @@ return(
                 props: { result }
             }
         }
-        `}</code>
+        `}</pre>
 
 
         <p>Return to <Link href="/"><a>Home Page</a></Link></p>
