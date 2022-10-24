@@ -329,19 +329,12 @@ export default function Home() {
     }, [output]);
 
 
-
-
-
-
-
-
-
   return (
     <div className={styles.container}>
 
-                <h1 className="text-3xl font-bold">API Pull and Array Manipulation using "Raw" React</h1>
+        <h1 className="text-3xl font-bold">API Pull and Array Manipulation using &quot;Raw&quot; React</h1>
 
-                <p>View the <Link href="/ssr"><a>Server Side Rendering (SSR)</a></Link> example</p>
+        <p>View the <Link href="/ssr"><a>Server Side Rendering (SSR)</a></Link> example</p>
         <div className="flex flex-row ml-24 w-full ">
 
             <div className="w-full lg:w-1/3">
@@ -350,7 +343,7 @@ export default function Home() {
 
                     <h2>Clear Output State</h2>
                     <div id="manualOutput">
-                        <button className=""  onClick={handleClearOutputHook} className="adminButton kviMVi">Clear Data Using React Hook</button>
+                        <button onClick={handleClearOutputHook} className="">Clear Data Using React Hook</button>
                     </div>
 
                     <h2>Update Array Locally</h2>
