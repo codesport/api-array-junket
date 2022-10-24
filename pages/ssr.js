@@ -49,6 +49,34 @@ return(
 
         <p>Sum of {result.length} IDs:  {mapReduce}</p>
 
+        {/* Embed code snippets in React render: https://stackoverflow.com/a/46649904/946957 */}
+        <code>{`
+        const SSR = ({ result }) => {
+
+            const mapReduce = result.map( (singleItem, Index) =>
+
+                    singleItem.id        
+            )        
+            .reduce( (previousValue, currentValue) =>
+                previousValue + currentValue
+            )     
+            return( 
+                ...
+            )
+
+        }
+
+        export async function getServerSideProps() {
+            const response = await axios.get(url)
+            const result = (response.data).splice(0,5)
+
+            return{
+                props: { result }
+            }
+        }
+        `}</code>
+
+
         <p>Return to <Link href="/"><a>Home Page</a></Link></p>
 
     </div>
