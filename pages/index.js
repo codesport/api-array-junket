@@ -45,6 +45,7 @@ export default function Home() {
     const url = 'https://jsonplaceholder.typicode.com/users'
 
     let outputFormatted
+    const [orderedList, setOrderedList] = useState(false)
 
 
 
@@ -334,14 +335,14 @@ export default function Home() {
         const req = await fetch("/api/execute");
         const data = await req.json()
 
-        console.log(data);
-
+        console.log('Ordered List in handler:', orderedList)
         let output = data.map( (singleItem, index) =>
         
             <li key={index}>{singleItem}</li>
         
         )
 
+        
     //     let i =0
 
     //     console.log('for each loop')
@@ -354,8 +355,10 @@ export default function Home() {
     //     output = '<ol>' +output2 +'</ol>'
 
     console.log(output)
+    console.log(data)
 
         setOutputForm(output)
+        setOrderedList(true)
         
     }
 
@@ -364,42 +367,47 @@ export default function Home() {
 
         <h1 className="text-3xl font-bold">API Pull and Array Manipulation using Axios and &quot;Raw&quot; React</h1>
 
+        <p>This page shows output from internal and external API calls.</p>  
+        
         <p>View the <Link href="/ssr"><a>Server Side Rendering (SSR)</a></Link> example</p>
         <div className="flex flex-row ml-24 w-full ">
 
             <div className="w-full lg:w-1/3">
-                    <h2>Manual API Call</h2>
+                    <h2>1. Manual API Call</h2>
                     <GetUserDataFormComponent onSubmitCallback={handleGetOutputCustomeLength} />
 
-                    <h2>Clear Output State</h2>
+                    <h2>2. Clear Output State</h2>
                     <div id="manualOutput">
                         <button onClick={handleClearOutputHook} className="">Clear Data Using React Hook</button>
                     </div>
 
-                    <h2>Update Array Locally</h2>
+                    <h2>3. Update Array Locally</h2>
                     <div id="updateArray">
                         <UpdateFormComponent onSubmitCallback={handleUpdate} />
                         
                     </div>
 
-                    <h2>Delete Array Element Locally</h2>
+                    <h2>4. Delete Array Element Locally</h2>
                     <div id="deleteArray">
                         <DeleteFormComponent onSubmitCallback={handleDelete} />
                     </div>   
 
-                    <h2>Execute Shell Script on Server</h2>
+                    <h2>5. Execute Shell Script on Server</h2>
                     <div id="executeShell">
                         <ExecuteShellScript onClickCallback={handleShellCommand} buttonText="Run Script on Server" />
                     </div>                                       
             </div>
             <div className="w-full lg:w-1/4">
-                    <h2>Output</h2>
+                    <h2>6. Output</h2>
                     <div id="autoOutput">
-                        {outputForm}
+                    
+                    {console.log('Ordered List in Render:', orderedList)}
+                        { !orderedList && outputForm }
+                        { orderedList && <ol>{outputForm}</ol> }    
                     </div>                    
             </div>            
             <div className="w-full lg:w-1/3">
-                   <h2>Post API Call, Then Append Locally</h2>
+                   <h2>7. Post API Call, Then Append Locally</h2>
                     <div id="postRequest">
                        <PostAndAppendFormComponent onSubmitCallback={handlePostAndAppend} />
                         {/* <button onClick={handlePostAndAppend} className="adminButton kviMVi">Run Post Request</button> */}

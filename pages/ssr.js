@@ -33,6 +33,8 @@ return(
 
         <p>These examples use Next.js Server Side Rendering (SSR) to manage API data.</p>
 
+        <p>Return to <Link href="/"><a>Home Page</a></Link></p>
+
         <h2 className="text-xl font-bold my-3">Using map to List Items</h2>
         <ol>
             {result.map( (singleItem, index) =>
