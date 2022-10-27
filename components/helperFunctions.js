@@ -7,6 +7,17 @@
     }
 
 
+const ExecuteShellScript = (props) =>{
+    console.log('executeShellScript:', props)
+    return(
+    <>
+            <button onClick={props.onClickCallback} className="" >{props.buttonText}</button>
+    
+    </>
+    )
+
+}
+
 const GetUserDataFormComponent = (props) =>{
     console.log('GetUserDataFormComponent Inputs:', props)
     return(
@@ -89,4 +100,4 @@ const AddUserDataFormComponent = (props) =>{
 
 
 //Named Exports
-export { GetUserDataFormComponent, PostAndAppendFormComponent, UpdateFormComponent, DeleteFormComponent}
+export { GetUserDataFormComponent, PostAndAppendFormComponent, UpdateFormComponent, DeleteFormComponent, ExecuteShellScript}

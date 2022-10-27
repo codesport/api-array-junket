@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
-import { GetUserDataFormComponent, PostAndAppendFormComponent, UpdateFormComponent, DeleteFormComponent } from "../components//helperFunctions"
+import { GetUserDataFormComponent, PostAndAppendFormComponent, UpdateFormComponent, DeleteFormComponent, ExecuteShellScript } from "../components//helperFunctions"
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import axios from "axios"
@@ -329,10 +329,40 @@ export default function Home() {
     }, [output]);
 
 
+
+    const handleShellCommand = async () => {
+        const req = await fetch("/api/execute");
+        const data = await req.json()
+
+        console.log(data);
+
+        let output = data.map( (singleItem, index) =>
+        
+            <li key={index}>{singleItem}</li>
+        
+        )
+
+    //     let i =0
+
+    //     console.log('for each loop')
+    //    let output2 =  data.forEach(singleItem => {
+    //         <li key={i++}>{singleItem}</li>
+            
+
+    //     });
+
+    //     output = '<ol>' +output2 +'</ol>'
+
+    console.log(output)
+
+        setOutputForm(output)
+        
+    }
+
   return (
     <div className={styles.container}>
 
-        <h1 className="text-3xl font-bold">API Pull and Array Manipulation using &quot;Raw&quot; React</h1>
+        <h1 className="text-3xl font-bold">API Pull and Array Manipulation using Axios and &quot;Raw&quot; React</h1>
 
         <p>View the <Link href="/ssr"><a>Server Side Rendering (SSR)</a></Link> example</p>
         <div className="flex flex-row ml-24 w-full ">
@@ -355,14 +385,18 @@ export default function Home() {
                     <h2>Delete Array Element Locally</h2>
                     <div id="deleteArray">
                         <DeleteFormComponent onSubmitCallback={handleDelete} />
-                    
-                    </div>                    
+                    </div>   
+
+                    <h2>Execute Shell Script on Server</h2>
+                    <div id="executeShell">
+                        <ExecuteShellScript onClickCallback={handleShellCommand} buttonText="Run Script on Server" />
+                    </div>                                       
             </div>
             <div className="w-full lg:w-1/4">
                     <h2>Output</h2>
-                    <div id="autoOutput" >
+                    <div id="autoOutput">
                         {outputForm}
-                    </div> 
+                    </div>                    
             </div>            
             <div className="w-full lg:w-1/3">
                    <h2>Post API Call, Then Append Locally</h2>

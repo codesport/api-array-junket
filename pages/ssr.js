@@ -85,6 +85,16 @@ return(
 
 }
 
+
+/**
+ * Three ways to fech external data in Next.js:
+ * 1. Uses a "handler" function in the API folder
+ * 2. SSR with getServeSideProps()
+ * 3. Use "raw" React to do a native fetch (or with axios)
+ *
+ * https://stackoverflow.com/a/69036809/946957
+ */
+
 //export default SSR
 
 export async function getServerSideProps() {
