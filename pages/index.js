@@ -271,6 +271,7 @@ export default function Home() {
         )
 
         setOutputForm(secondOutputFormatted)
+        setOrderedList(false)
     }
 
 
@@ -296,6 +297,7 @@ export default function Home() {
         console.log('Clear form using React hook')
 
         setOutputForm([])
+        setOrderedList(false)
 
     }       
 
@@ -403,7 +405,14 @@ export default function Home() {
                     
                     {console.log('Ordered List in Render:', orderedList)}
                         { !orderedList && outputForm }
-                        { orderedList && <ol>{outputForm}</ol> }    
+                        { orderedList && (
+                            <>
+                            <p>Output of <em>ls-al</em>:</p>
+                            <ol>{outputForm}</ol>
+                            </>
+                        )
+                         }
+                             
                     </div>                    
             </div>            
             <div className="w-full lg:w-1/3">
